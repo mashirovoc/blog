@@ -1,5 +1,5 @@
-import { ThemeProvider } from "@/lib/ThemeProvider";
-import { cn } from "@/lib/utils";
+import { ThemeProvider } from "@/libs/ThemeProvider";
+import { cn } from "@/libs/utils";
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
 import { Toaster } from "sonner";

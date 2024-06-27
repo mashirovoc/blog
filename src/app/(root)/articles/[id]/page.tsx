@@ -2,7 +2,7 @@ import CopyLinkButton from "@/components/articles/CopyLinkButton";
 import LatestArticles from "@/components/articles/LatestArticles";
 import TagFields from "@/components/articles/TagFields";
 import Loading from "@/components/common/Loading";
-import { client } from "@/libs/client";
+import { client } from "@/lib/client";
 import { Article } from "@/types/Article";
 import { format, parseISO } from "date-fns";
 import parse, { Element } from "html-react-parser";

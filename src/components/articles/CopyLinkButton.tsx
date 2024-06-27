@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/libs/utils";
 import { useState } from "react";
 import { AiOutlineLink } from "react-icons/ai";
 import { toast } from "sonner";

@@ -1,4 +1,4 @@
-import { client } from "@/libs/client";
+import { client } from "@/lib/client";
 import { Article } from "@/types/Article";
 import { MicroCMSListResponse } from "microcms-js-sdk";
 import Articles from "../cards/Articles";
