@@ -79,21 +79,21 @@ const page = async ({ params }: { params: { id: string } }) => {
           <div className="flex flex-col lg:flex-row gap-6">
             <div className="space-y-6">
               <Link
-                href={`https://x.com/intent/post?url=https://localhost/articles/${data.id}&text=${data.title}%20/%20ましろさんブログ`}
+                href={`https://x.com/intent/post?url=https://mashirovoc.vercel.app/articles/${data.id}&text=${data.title}%20/%20ましろさんブログ`}
                 target="_blank"
                 className="block"
               >
                 <FaXTwitter size={32} />
               </Link>
               <Link
-                href={`https://social-plugins.line.me/lineit/share?url=https://localhost/articles/${data.id}&text=${data.title}%20/%20ましろさんブログ`}
+                href={`https://social-plugins.line.me/lineit/share?url=https://mashirovoc.vercel.app/articles/${data.id}&text=${data.title}%20/%20ましろさんブログ`}
                 target="_blank"
                 className="block"
               >
                 <FaLine size={32} />
               </Link>
               <Link
-                href={`https://www.facebook.com/sharer/sharer.php?u=https://localhost/articles/${data.id}`}
+                href={`https://www.facebook.com/sharer/sharer.php?u=https://mashirovoc.vercel.app/articles/${data.id}`}
                 target="_blank"
                 className="block"
               >
