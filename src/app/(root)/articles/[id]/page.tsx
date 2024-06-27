@@ -77,7 +77,7 @@ const page = async ({ params }: { params: { id: string } }) => {
             </div>
           )}
           <div className="flex flex-col lg:flex-row gap-6">
-            <div className="space-y-6">
+            <div className="flex flex-row lg:flex-col gap-6">
               <Link
                 href={`https://x.com/intent/post?url=https://mashirovoc.vercel.app/articles/${data.id}&text=${data.title}%20/%20ましろさんブログ`}
                 target="_blank"
