@@ -1,4 +1,4 @@
-import { client } from "@/lib/client";
+import { client } from "@/libs/client";
 import { Article } from "@/types/Article";
 import { format, parseISO } from "date-fns";
 import { MicroCMSListResponse } from "microcms-js-sdk";

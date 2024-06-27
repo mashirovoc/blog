@@ -1,6 +1,6 @@
 import CategoryTaggedArticles from "@/components/categories/CategoryTaggedArticles";
 import Loading from "@/components/common/Loading";
-import { client } from "@/lib/client";
+import { client } from "@/libs/client";
 import { Category } from "@/types/Category";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
