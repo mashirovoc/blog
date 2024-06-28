@@ -26,7 +26,7 @@ const LatestArticles = async () => {
             href={`/articles/${v.id}`}
             className="flex items-center gap-3 p-3 hover:bg-accent hover:text-accent-foreground transition-colors duration-300 ease-in-out rounded-md group/image"
           >
-            <div className="w-32 aspect-video">
+            <div className="w-32 aspect-video shrink-0">
               {v.thumbnail ? (
                 <div className="w-full h-full object-cover rounded-md overflow-clip">
                   <Image
