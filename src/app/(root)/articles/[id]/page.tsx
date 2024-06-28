@@ -139,7 +139,7 @@ const page = async ({ params }: { params: { id: string } }) => {
             </div>
           </div>
         </div>
-        <div className="ml-3 hidden lg:block w-[320px] p-3">
+        <div className="ml-3 hidden lg:block w-[320px] p-3 shrink-0">
           <div className="space-y-6 w-full h-full">
             <div className="space-y-3">
               <div className="bg-secondary text-secondary-foreground rounded-md p-3 font-semibold">
