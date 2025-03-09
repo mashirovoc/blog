@@ -1,3 +1,4 @@
+import Player from "@/components/cards/mmd/Player";
 import Loading from "@/components/common/Loading";
 import LatestArticles from "@/components/home/LatestArticles";
 import { Button } from "@/components/ui/button";
@@ -16,13 +17,7 @@ const page = () => {
   return (
     <>
       <div className="w-full h-dvh">
-        <video className="object-cover w-full h-full" autoPlay loop muted>
-          <source
-            src="https://utfs.io/f/8302ae9d-87de-46f2-ac3e-ab50f4a1c8bd-1k7wit.mp4"
-            type="video/mp4"
-          />
-          あなたのブラウザはVideoタグをサポートしていません。
-        </video>
+        <Player />
         <div className="absolute inset-0 flex items-end justify-end p-6">
           <div className="'backdrop-blur-md rounded-md bg-white/60 p-6 flex flex-col gap-6 border items-center justify-center">
             <div className="flex items-center justify-center gap-3">
