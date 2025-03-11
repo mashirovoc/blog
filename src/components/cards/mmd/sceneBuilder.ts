@@ -12,6 +12,7 @@ import {
   Scene,
   SceneLoader,
   ShadowGenerator,
+  SpotLight,
   TransformNode,
   Vector3,
 } from "@babylonjs/core";
@@ -52,7 +53,7 @@ const createMmdRoot = (scene: Scene): TransformNode => {
 
 const createMmdCamera = (scene: Scene, mmdRoot: TransformNode): MmdCamera => {
   const mmdCamera = new MmdCamera("mmdCamera", new Vector3(0, 10, 0), scene);
-  mmdCamera.maxZ = 300;
+  mmdCamera.maxZ = 640;
   mmdCamera.minZ = 1;
   mmdCamera.parent = mmdRoot;
   mmdCamera.inertia = 0.8;
@@ -65,8 +66,8 @@ const createAmbientLight = (scene: Scene): HemisphericLight => {
     new Vector3(0, 1, 0),
     scene
   );
-  ambientLight.intensity = 0.8;
-  ambientLight.diffuse = new Color3(0.8, 0.8, 0.8);
+  ambientLight.intensity = 0.125;
+  ambientLight.diffuse = new Color3(0.69, 0.79, 0.89);
   ambientLight.groundColor = new Color3(0.4, 0.4, 0.4);
   return ambientLight;
 };
@@ -77,11 +78,53 @@ const createDirectionalLight = (scene: Scene): DirectionalLight => {
     new Vector3(0.5, -1, 1),
     scene
   );
-  directionalLight.diffuse = new Color3(0.976, 1.0, 0.976);
-  directionalLight.intensity = 1.03;
+  directionalLight.diffuse = new Color3(0.69, 0.79, 0.89);
+  directionalLight.intensity = 0.33;
   directionalLight.autoCalcShadowZBounds = false;
   directionalLight.autoUpdateExtends = false;
   return directionalLight;
+};
+
+const createLeftSpotLight = (
+  scene: Scene,
+  mmdRoot: TransformNode
+): SpotLight => {
+  const leftSpotLight = new SpotLight(
+    "leftSpotLight",
+    new Vector3(-20, 40, -50),
+    new Vector3(0.5, -0.5, 0.8),
+    Math.PI / 5,
+    2,
+    scene
+  );
+  leftSpotLight.intensity = 0.44;
+  leftSpotLight.diffuse = new Color3(0.98, 0.99, 1);
+  leftSpotLight.specular = new Color3(0.2, 0.2, 0.2);
+  leftSpotLight.shadowEnabled = true;
+  leftSpotLight.parent = mmdRoot;
+
+  return leftSpotLight;
+};
+
+const createRightSpotLight = (
+  scene: Scene,
+  mmdRoot: TransformNode
+): SpotLight => {
+  const rightSpotLight = new SpotLight(
+    "rightSpotLight",
+    new Vector3(20, 40, -50),
+    new Vector3(-0.5, -0.5, 0.8),
+    Math.PI / 5,
+    2,
+    scene
+  );
+  rightSpotLight.intensity = 0.44;
+  rightSpotLight.diffuse = new Color3(0.98, 0.99, 1);
+  rightSpotLight.specular = new Color3(0.2, 0.2, 0.2);
+  rightSpotLight.shadowEnabled = true;
+  rightSpotLight.parent = mmdRoot;
+
+  return rightSpotLight;
 };
 
 const createGround = (
@@ -333,6 +376,9 @@ export const buildScene: ISceneBuilder["build"] = async (
     const directionalLight = createDirectionalLight(scene);
     createAmbientLight(scene);
     createGround(scene, directionalLight, mmdRoot);
+
+    createLeftSpotLight(scene, mmdRoot);
+    createRightSpotLight(scene, mmdRoot);
 
     const audioPlayer = setupAudioPlayer(scene, assets.soundFilePath);
 
