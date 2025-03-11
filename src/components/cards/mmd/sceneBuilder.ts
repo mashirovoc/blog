@@ -13,6 +13,7 @@ import {
   SceneLoader,
   ShadowGenerator,
   SpotLight,
+  SSAORenderingPipeline,
   TransformNode,
   Vector3,
 } from "@babylonjs/core";
@@ -20,6 +21,7 @@ import { ShadowOnlyMaterial } from "@babylonjs/materials";
 import {
   BpmxLoader,
   BvmdLoader,
+  getMmdWasmInstance,
   MmdAnimation,
   MmdCamera,
   MmdMesh,
@@ -28,10 +30,9 @@ import {
   MmdWasmInstanceTypeSPR,
   MmdWasmPhysics,
   MmdWasmRuntime,
+  registerDxBmpTextureLoader,
   SdefInjector,
   StreamAudioPlayer,
-  getMmdWasmInstance,
-  registerDxBmpTextureLoader,
 } from "babylon-mmd";
 import type { AssetsPath, ISceneBuilder } from "./baseRuntime.ts";
 
@@ -356,6 +357,17 @@ const optimizeScene = (scene: Scene): void => {
   });
 };
 
+const setupPostProcesses = (scene: Scene, mmdCamera: MmdCamera): void => {
+  new SSAORenderingPipeline("ssaoPipeline", scene, {
+    ssaoRatio: 0.75,
+    combineRatio: 1.0,
+  });
+  scene.postProcessRenderPipelineManager.attachCamerasToRenderPipeline(
+    "ssaoPipeline",
+    mmdCamera
+  );
+};
+
 export const buildScene: ISceneBuilder["build"] = async (
   engine: AbstractEngine,
   assets: AssetsPath,
@@ -379,6 +391,8 @@ export const buildScene: ISceneBuilder["build"] = async (
 
     createLeftSpotLight(scene, mmdRoot);
     createRightSpotLight(scene, mmdRoot);
+
+    setupPostProcesses(scene, mmdCamera);
 
     const audioPlayer = setupAudioPlayer(scene, assets.soundFilePath);
 
